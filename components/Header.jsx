@@ -139,6 +139,15 @@ export default function Header() {
     return () => document.removeEventListener("mousedown", onClick);
   }, []);
 
+  // Clicking a link to the page you are already on does not scroll up in the Next.js App Router,
+  // so for the home page we scroll to the top ourselves.
+  const toTopIfHere = (href) => (e) => {
+    if (href === pathname) {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+  };
+
   const isActive = (href) => {
     if (href === "/") return pathname === "/";
     if (href === "/categories") return pathname.startsWith("/categories") || pathname.startsWith("/category/");
@@ -154,7 +163,7 @@ export default function Header() {
   return (
     <header className="sticky top-0 z-40 bg-white shadow-[0_1px_3px_rgba(0,0,0,.1)]">
       <div className="wrap flex h-[69px] items-center max-md:h-auto max-md:flex-wrap max-md:gap-y-3 max-md:py-3">
-        <Link href="/" className="flex-none" aria-label="ShopHub home">
+        <Link href="/" className="flex-none" aria-label="ShopHub home" onClick={toTopIfHere("/")}>
           <img className="block h-9 w-auto" src="/img/logo.svg" alt="ShopHub" width="135" height="36" />
         </Link>
 
@@ -167,6 +176,7 @@ export default function Header() {
             <li key={n.label}>
               <Link
                 href={n.href}
+                onClick={toTopIfHere(n.href)}
                 className={`text-base leading-6 transition-colors ${isActive(n.href) ? "text-brand" : "text-body hover:text-brand"}`}
               >
                 {n.label}
