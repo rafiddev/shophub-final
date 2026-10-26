@@ -1,0 +1,42 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    function signedIn() {
+      return request.auth != null;
+    }
+
+    // Each customer can read and write only their own profile (cart, wishlist, address).
+    match /users/{uid} {
+      allow read, write: if signedIn() && request.auth.uid == uid;
+    }
+
+    // Orders are created ONLY by our server (app/api/checkout, using the Firebase Admin SDK, which
+    // ignores these rules). That is how guests can order without an account, and it stops anyone from
+    // changing prices or payment status from the browser.
+    // A logged-in customer can read their own orders and cancel one while it is pending and unpaid.
+    match /orders/{orderId} {
+      allow create: if false;
+
+      allow read: if signedIn() && resource.data.uid == request.auth.uid;
+
+      allow update: if signedIn()
+        && resource.data.uid == request.auth.uid
+        && resource.data.status == 'pending'
+        && resource.data.paymentStatus == 'unpaid'
+        && request.resource.data.status == 'cancelled'
+        && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['status', 'cancelledAt']);
+
+      allow delete: if false;
+    }
+
+    // Newsletter: anyone can subscribe, nobody can read the list from the browser.
+    match /subscribers/{email} {
+      allow create, update: if request.resource.data.keys().hasOnly(['email', 'createdAt'])
+        && request.resource.data.email is string
+        && request.resource.data.email.size() < 255;
+      allow read, delete: if false;
+    }
+  }
+}

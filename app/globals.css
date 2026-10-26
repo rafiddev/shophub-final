@@ -1,0 +1,152 @@
+/* ShopHub: Tailwind CSS v4.
+   Most styling is done with utility classes directly in the components.
+   This file only holds: the design tokens (@theme), a few base rules, and a handful of
+   small reusable classes (buttons, form fields, panels, notices) built from Tailwind utilities. */
+@import "tailwindcss";
+
+@theme {
+  /* brand colours */
+  --color-brand: #2563eb;
+  --color-brand-dark: #1e40af;
+  --color-brand-light: #3b82f6;
+  --color-tint: #dbeafe;
+  /* text / surface colours */
+  --color-ink: #111827;
+  --color-body: #374151;
+  --color-muted: #4b5563;
+  --color-faint: #9ca3af;
+  --color-soft: #adaebc;
+  --color-line: #e5e7eb;
+  --color-surface: #f9fafb;
+  --color-danger: #ef4444;
+  --color-ok: #16a34a;
+
+  --font-sans: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+
+  /* breakpoints (used with max-*: variants, for example max-md: = below 860px) */
+  --breakpoint-sm: 560px;
+  --breakpoint-md: 860px;
+  --breakpoint-lg: 1100px;
+
+  --animate-shimmer: shimmer 1.2s infinite;
+  @keyframes shimmer {
+    to {
+      background-position: -200% 0;
+    }
+  }
+}
+
+/* page width: 1210px max, 10px side padding */
+@utility wrap {
+  width: 100%;
+  max-width: 1210px;
+  margin-inline: auto;
+  padding-inline: 10px;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 76px;
+  }
+  body {
+    @apply bg-white font-sans text-ink antialiased;
+  }
+  /* Tailwind v4 no longer gives buttons a pointer cursor */
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+  button:disabled {
+    @apply cursor-not-allowed opacity-60;
+  }
+  code {
+    @apply rounded bg-[#f3f4f6] px-[5px] py-px text-[.9em];
+  }
+  @media (prefers-reduced-motion: reduce) {
+    * {
+      transition: none !important;
+      animation: none !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+@layer components {
+  /* ----- headings ----- */
+  .section-h {
+    @apply pt-16 text-3xl font-bold max-md:pt-9 max-md:text-[22px];
+  }
+  .page-title {
+    @apply text-3xl font-bold max-md:text-2xl;
+  }
+  .card-title {
+    @apply pb-3.5 text-xl leading-7 font-bold;
+  }
+
+  /* ----- buttons ----- */
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-lg border border-brand bg-brand px-5 py-[11px] text-base font-semibold text-white transition-colors not-disabled:hover:bg-brand-dark;
+  }
+  .btn-outline {
+    @apply inline-flex items-center justify-center gap-2 rounded-lg border border-line bg-white px-5 py-[11px] text-base font-semibold text-body transition-colors not-disabled:hover:bg-surface;
+  }
+  .btn-link {
+    @apply bg-transparent py-1.5 text-sm text-muted underline;
+  }
+  .link-danger {
+    @apply bg-transparent p-0 text-sm text-danger hover:underline;
+  }
+
+  /* ----- form fields: <div class="field"><label/><input/></div> ----- */
+  .field label {
+    @apply mb-1 block text-sm font-medium text-body;
+  }
+  .field input,
+  .field textarea {
+    @apply h-[42px] w-full rounded-lg border border-line bg-white px-3 text-base text-ink outline-none focus:border-brand focus:ring-3 focus:ring-tint;
+  }
+  .field textarea {
+    @apply h-auto resize-y py-2.5;
+  }
+  .field input[aria-invalid="true"] {
+    @apply border-danger;
+  }
+  .field input:disabled {
+    @apply bg-surface text-muted;
+  }
+  .err {
+    @apply mt-1 block text-[13px] text-danger;
+  }
+  .form-error {
+    @apply my-3 rounded-lg border border-[#fecaca] bg-[#fef2f2] px-3 py-2.5 text-sm text-[#b91c1c];
+  }
+
+  /* ----- boxes ----- */
+  .panel {
+    @apply rounded-lg border border-line p-5;
+  }
+  .notice {
+    @apply mt-5 rounded-lg border border-dashed border-line bg-surface px-4 py-10 text-center;
+  }
+  .notice p {
+    @apply mb-4 text-muted;
+  }
+  .notice-error {
+    @apply border-[#fecaca] bg-[#fef2f2];
+  }
+  .notice-error p {
+    @apply text-[#b91c1c];
+  }
+  .notice-warn {
+    @apply my-4 border-solid border-[#fde68a] bg-[#fffbeb] px-3.5 py-3 text-left;
+  }
+  .notice-warn p {
+    @apply m-0 text-sm text-[#92400e];
+  }
+
+  /* ----- loading placeholder ----- */
+  .skeleton {
+    @apply animate-shimmer rounded-lg bg-[#f3f4f6] bg-[length:200%_100%] bg-linear-to-r from-[#f3f4f6] via-line to-[#f3f4f6];
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "rules": {
+    "presence": {
+      ".read": true,
+      "$session": { ".write": true, ".validate": "newData.isBoolean()" }
+    },
+    "orders": {
+      "$orderId": {
+        ".read": "auth != null && data.child('uid').val() === auth.uid",
+        ".write": "auth != null && !data.exists() && newData.child('uid').val() === auth.uid"
+      }
+    }
+  }
+}

@@ -1,0 +1,140 @@
+[
+  {
+    "category": "books",
+    "thumbnail": "/img/book-cover.svg",
+    "images": [
+      "/img/book-cover.svg"
+    ],
+    "stock": 25,
+    "reviews": [],
+    "availabilityStatus": "In Stock",
+    "shippingInformation": "Ships in 1-2 business days",
+    "returnPolicy": "30 days return policy",
+    "id": 1001,
+    "title": "The Pragmatic Programmer",
+    "brand": "Addison-Wesley",
+    "price": 39.99,
+    "discountPercentage": 12,
+    "rating": 4.8,
+    "tags": [
+      "books",
+      "programming"
+    ],
+    "description": "A practical guide to writing flexible, maintainable code and growing as a developer."
+  },
+  {
+    "category": "books",
+    "thumbnail": "/img/book-cover.svg",
+    "images": [
+      "/img/book-cover.svg"
+    ],
+    "stock": 25,
+    "reviews": [],
+    "availabilityStatus": "In Stock",
+    "shippingInformation": "Ships in 1-2 business days",
+    "returnPolicy": "30 days return policy",
+    "id": 1002,
+    "title": "Clean Code",
+    "brand": "Prentice Hall",
+    "price": 34.5,
+    "discountPercentage": 8,
+    "rating": 4.6,
+    "tags": [
+      "books",
+      "programming"
+    ],
+    "description": "Learn to write readable code and refactor with confidence."
+  },
+  {
+    "category": "books",
+    "thumbnail": "/img/book-cover.svg",
+    "images": [
+      "/img/book-cover.svg"
+    ],
+    "stock": 25,
+    "reviews": [],
+    "availabilityStatus": "In Stock",
+    "shippingInformation": "Ships in 1-2 business days",
+    "returnPolicy": "30 days return policy",
+    "id": 1003,
+    "title": "Atomic Habits",
+    "brand": "Avery",
+    "price": 18.99,
+    "discountPercentage": 15,
+    "rating": 4.9,
+    "tags": [
+      "books",
+      "self-help"
+    ],
+    "description": "An easy way to build good habits and break bad ones."
+  },
+  {
+    "category": "books",
+    "thumbnail": "/img/book-cover.svg",
+    "images": [
+      "/img/book-cover.svg"
+    ],
+    "stock": 25,
+    "reviews": [],
+    "availabilityStatus": "In Stock",
+    "shippingInformation": "Ships in 1-2 business days",
+    "returnPolicy": "30 days return policy",
+    "id": 1004,
+    "title": "Deep Work",
+    "brand": "Grand Central",
+    "price": 16.99,
+    "discountPercentage": 10,
+    "rating": 4.5,
+    "tags": [
+      "books",
+      "productivity"
+    ],
+    "description": "Rules for focused success in a distracted world."
+  },
+  {
+    "category": "books",
+    "thumbnail": "/img/book-cover.svg",
+    "images": [
+      "/img/book-cover.svg"
+    ],
+    "stock": 25,
+    "reviews": [],
+    "availabilityStatus": "In Stock",
+    "shippingInformation": "Ships in 1-2 business days",
+    "returnPolicy": "30 days return policy",
+    "id": 1005,
+    "title": "JavaScript: The Good Parts",
+    "brand": "O'Reilly",
+    "price": 24.99,
+    "discountPercentage": 5,
+    "rating": 4.3,
+    "tags": [
+      "books",
+      "programming"
+    ],
+    "description": "A concise look at the most reliable features of JavaScript."
+  },
+  {
+    "category": "books",
+    "thumbnail": "/img/book-cover.svg",
+    "images": [
+      "/img/book-cover.svg"
+    ],
+    "stock": 25,
+    "reviews": [],
+    "availabilityStatus": "In Stock",
+    "shippingInformation": "Ships in 1-2 business days",
+    "returnPolicy": "30 days return policy",
+    "id": 1006,
+    "title": "The Lean Startup",
+    "brand": "Crown Business",
+    "price": 21.99,
+    "discountPercentage": 20,
+    "rating": 4.4,
+    "tags": [
+      "books",
+      "business"
+    ],
+    "description": "How today's entrepreneurs use continuous innovation to build successful businesses."
+  }
+]
